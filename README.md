@@ -6,7 +6,7 @@ A modern, responsive front-end clone of the Uber landing page and ride-booking e
 
 
 
-[** Live Demo https://uber-frontend-orpin.vercel.app/ **](https://uber-frontend-orpin.vercel.app/) <!-- Add a link here if you deploy the project -->
+[**Live Demo https://uber-frontend-orpin.vercel.app/**](https://uber-frontend-orpin.vercel.app/) <!-- Add a link here if you deploy the project -->
 
 ---
 
