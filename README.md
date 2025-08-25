@@ -1,69 +1,132 @@
-# React + TypeScript + Vite
+# Uber Clone - React & Vite Frontend
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+ <!-- It's highly recommended to replace this with an actual screenshot of your running application -->
 
-Currently, two official plugins are available:
+A modern, responsive front-end clone of the Uber landing page and ride-booking experience. Built with React, Vite, and TypeScript, this project demonstrates a complete user flow from landing on the page to booking a ride, all without a backend. User authentication and ride state are managed locally using Zustand with `localStorage` persistence.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
 
-## Expanding the ESLint configuration
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+[** Live Demo https://uber-frontend-orpin.vercel.app/ **](https://uber-frontend-orpin.vercel.app/) <!-- Add a link here if you deploy the project -->
 
-```js
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+---
 
-      // Remove tseslint.configs.recommended and replace with this
-      ...tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      ...tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      ...tseslint.configs.stylisticTypeChecked,
+## ✨ Features
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+-   **Dynamic Landing Page**: A visually appealing and engaging landing page with multiple sections:
+    -   An impactful Hero section.
+    -   A "How It Works" guide.
+    -   A showcase of available ride options.
+-   **User Authentication**:
+    -   Login and Sign Up forms.
+    -   User session persistence across page reloads using `localStorage`.
+-   **Protected Routes**: The ride-booking flow is only accessible to authenticated users.
+-   **Multi-Step Ride Booking Flow**:
+    1.  **Add Address**: Input fields for pickup (current location) and destination.
+    2.  **Fare Options**: Display of different vehicle types (Bike, Auto, Cab) with simulated fares.
+    3.  **Finding Rider**: An animated loading state that simulates searching for a driver.
+    4.  **Driver Details**: Displays the found driver's information (name, rating, car, avatar).
+    5.  **Map View**: A simulated map screen tracking the driver's arrival.
+    6.  **Payment**: A final, simulated payment screen to complete the flow.
+-   **Modern Tech Stack**: Built with the latest front-end technologies for a fast and reliable developer experience.
+-   **Fully Responsive**: Designed to work seamlessly on desktop, tablet, and mobile devices.
+
+---
+
+## 🛠️ Tech Stack
+
+-   **Framework**: [React](https://reactjs.org/)
+-   **Build Tool**: [Vite](https://vitejs.dev/)
+-   **Language**: [TypeScript](https://www.typescriptlang.org/)
+-   **Styling**: [Tailwind CSS](https://tailwindcss.com/)
+-   **UI Components**: [shadcn/ui](https://ui.shadcn.com/)
+-   **State Management**: [Zustand](https://github.com/pmndrs/zustand) (with `persist` middleware)
+-   **Routing**: [React Router DOM](https://reactrouter.com/)
+-   **Icons**: [Lucide React](https://lucide.dev/)
+
+---
+
+## 🚀 Getting Started
+
+Follow these instructions to set up and run the project locally on your machine.
+
+### Prerequisites
+
+-   [Node.js](https://nodejs.org/) (version 18.x or higher is recommended)
+-   [npm](https://www.npmjs.com/) or [yarn](https://yarnpkg.com/)
+
+### Installation
+
+1.  **Clone the repository:**
+    ```bash
+    git clone https://github.com/your-username/uber-clone-app.git
+    cd uber-clone-app
+    ```
+
+2.  **Install dependencies:**
+    ```bash
+    npm install
+    ```
+    or
+    ```bash
+    yarn install
+    ```
+
+3.  **Set up shadcn/ui components:**
+    The project is pre-configured, but if you need to add more `shadcn/ui` components, you can do so with the CLI:
+    ```bash
+    npx shadcn-ui@latest add <component_name>
+    ```
+
+### Running the Development Server
+
+1.  **Start the development server:**
+    ```bash
+    npm run dev
+    ```
+
+2.  **Open the application:**
+    Open your browser and navigate to `http://localhost:5173` (or the port specified in your terminal).
+
+---
+
+## 📂 Project Structure
+
+The project follows a feature-based structure to keep the code organized and scalable.
+
+```
+src/
+├── components/
+│   ├── ui/             # Auto-generated by shadcn/ui
+│   ├── auth/           # Login, SignUp, ProtectedRoute components
+│   ├── booking/        # Components for the ride booking flow
+│   ├── layout/         # Header, Footer, etc.
+│   └── landing/        # Components for the home page
+├── lib/
+│   ├── store.ts        # Zustand global state store
+│   └── utils.ts        # Utility functions (e.g., cn for classnames)
+├── pages/
+│   ├── AuthPage.tsx
+│   ├── BookRidePage.tsx
+│   └── HomePage.tsx
+├── App.tsx             # Main component with routing setup
+├── index.css           # Global styles and Tailwind directives
+└── main.tsx            # Application entry point
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+---
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+## 💡 How It Works
 
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+### Authentication Simulation
+
+Since there is no backend, user authentication is simulated using `localStorage`:
+-   **Sign Up**: A new user object (including a mock password) is created and saved as a JSON string in `localStorage` under the key `uber-clone-user`. The user is also immediately logged into the Zustand store.
+-   **Login**: The entered credentials are compared against the user object stored in `localStorage`. If they match, the user data is loaded into the Zustand store.
+
+### State Persistence
+
+The Zustand `persist` middleware automatically saves the entire state (user object, `from`/`to` addresses) to `localStorage` under the key `uber-clone-storage`. This ensures that:
+-   A user remains logged in even after refreshing the page.
+-   Ride details are not lost if the user navigates away and comes back.
+
+---
